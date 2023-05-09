@@ -1,14 +1,27 @@
-import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import Maze from './components/Maze/Maze';
+import HomePage from './pages/HomePage';
 
-function App() {
+const App = () => {
+  const [username, setUsername] = useState('');
+  const [selectedMode, setSelectedMode] = useState('');
+  const [gameStarted, setGameStarted] = useState(false);
+
+  const startGame = (username, mode) => {
+    console.log("game has started");
+    setUsername(username);
+    setSelectedMode(mode);
+    setGameStarted(true);
+  };
   return (
     <>
-      <Routes>
-        <Route></Route>
-      </Routes>
+      {!gameStarted ? (
+        <HomePage startGame={startGame} />
+      ) : (
+        <Maze gameStarted={gameStarted} startGame={startGame} username={username} selectedMode={selectedMode} />
+      )}
     </>
-  );
-}
+  )
+};
 
 export default App;
