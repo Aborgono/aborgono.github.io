@@ -8,7 +8,6 @@ const App = () => {
   const [gameStarted, setGameStarted] = useState(false);
 
   const startGame = (username, mode) => {
-    console.log("game has started");
     setUsername(username);
     setSelectedMode(mode);
     setGameStarted(true);
