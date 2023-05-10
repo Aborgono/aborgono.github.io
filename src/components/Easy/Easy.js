@@ -19,7 +19,7 @@ const EasyMode = (props) => {
 
   return (
     <>
-      <div>Welcome to Easy Mode {username}</div>
+      <div className='welcome-message'>Welcome to Easy Mode {username}</div>
       <div className="maze-container">
         {mazeLayout.map((row, rowIndex) => (
           <div key={rowIndex} className="maze-row">
@@ -38,3 +38,5 @@ const EasyMode = (props) => {
   
 
 export default EasyMode;
+
+// ${rowIndex === 0 && cellIndex === 0 ? 'start' : ''}

@@ -1,22 +1,43 @@
 .maze-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .maze-row {
-    display: flex;
-  }
-  
-  .maze-cell {
-    width: 60px;
-    height: 60px;
-    border: 1px solid #ccc;
-  }
-  
-  .wall {
-    background-color: #000;
-  }
-  
-  .path {
-    background-color: #fff;
-  }
+display: flex;
+flex-direction: column;
+}
+
+.maze-row {
+display: flex;
+}
+
+.maze-cell {
+width: 60px;
+height: 60px;
+border: 1px solid #ccc;
+}
+
+.wall {
+background-color: #000;
+}
+
+.path {
+background-color: #fff;
+}
+
+.start {
+background-color: yellow;
+}
+
+.welcome-message {
+font-size: 24px;
+text-align: center;
+animation: slideIn 1s ease-in-out;
+}
+
+@keyframes slideIn {
+0% {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+100% {
+    opacity: 1;
+    transform: translateY(0);
+}
+}

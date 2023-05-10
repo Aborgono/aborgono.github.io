@@ -3,6 +3,7 @@ import HomePage from '../../pages/HomePage';
 import EasyMode from '../Easy/Easy';
 import HardMode from '../Hard/Hard';
 import MediumMode from '../Medium/Medium';
+import './Maze.scss';
 
 const Maze = (props) => {
     console.log("MAZE", props.selectedMode, );
@@ -48,7 +49,7 @@ const Maze = (props) => {
 
     return (
         <div>
-        <h2>Maze Game</h2>
+        <h2 className='maze-game-title'>Maze Game</h2>
         {selectedMode === 'easy' && <EasyMode username={username} setPlayerY={setPlayerY}/>}
         {selectedMode === 'medium' && <MediumMode username={username} setPlayerY={setPlayerY} />}
         {selectedMode === 'hard' && <HardMode username={username} setPlayerY={setPlayerY} />}

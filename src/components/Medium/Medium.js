@@ -20,7 +20,7 @@ const MediumMode = (props) => {
   })
   return (
     <>
-      <div>Welcome to Medium Mode {username}</div>
+      <div className='welcome-message'>Welcome to Medium Mode {username}</div>
       <div className="maze-container">
         {mazeLayout.map((row, rowIndex) => (
           <div key={rowIndex} className="maze-row">
