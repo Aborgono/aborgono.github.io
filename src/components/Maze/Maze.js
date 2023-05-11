@@ -46,7 +46,7 @@ const Maze = (props) => {
     return (
         <div>
         <h2 className='maze-game-title'>Maze Game</h2>
-        {selectedMode === 'easy' && <EasyMode username={username} handleKeyDown={handleKeyDown} playerX={playerX} setPlayerX={setPlayerX} playerY={playerY} setPlayerY={setPlayerY}/>}
+        {selectedMode === 'easy' && <EasyMode username={username} handleKeyDown={handleKeyDown} playerX={playerX} playerY={playerY}/>}
         {selectedMode === 'medium' && <MediumMode username={username} setPlayerY={setPlayerY} />}
         {selectedMode === 'hard' && <HardMode username={username} setPlayerY={setPlayerY} />}
         </div>

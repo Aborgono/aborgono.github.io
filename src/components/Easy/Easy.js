@@ -2,8 +2,6 @@ import React, { useEffect, useMemo, useState } from 'react';
 import './Easy.scss'
 
 const EasyMode = (props) => {
-  const setPlayerY = props.setPlayerY
-  const setPlayerX = props.setPlayerX
   const playerY = props.playerY
   const playerX = props.playerX
   const username = props.username
@@ -24,13 +22,15 @@ const EasyMode = (props) => {
   //   setPlayerY(0)
   // }, [])
 
-  document.addEventListener('keydown', (e) => handleKeyDown(e));
+  // document.addEventListener('keydown', (e) => handleKeyDown(e));
 
-// useEffect(() => {
-//   return () => {
-//     document.removeEventListener('keydown', (e) => handleKeyDown(e))
-//   }
-// }, [])
+useEffect(() => {
+  console.log("Setting up eventListener");
+  document.addEventListener('keydown', handleKeyDown);
+  return () => {
+    document.removeEventListener('keydown', handleKeyDown)
+  }
+})
 
   return (
     <>
