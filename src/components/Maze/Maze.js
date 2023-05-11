@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import HomePage from '../../pages/HomePage';
 import EasyMode from '../Easy/Easy';
 import HardMode from '../Hard/Hard';
@@ -6,33 +6,33 @@ import MediumMode from '../Medium/Medium';
 import './Maze.scss';
 
 const Maze = (props) => {
-    console.log("MAZE", props.selectedMode, );
+    console.log("MAZE", props.selectedMode );
     const username = props.username
     const selectedMode = props.selectedMode
-    const startGame = props.startGame
-    const gameStarted = props.gameStarted
     const [playerX, setPlayerX] = useState(0);
-    const [playerY, setPlayerY] = useState();
-
-    
-   
+    const [playerY, setPlayerY] = useState(0);
 
     const handleKeyDown = (event) => {
+        // document.removeEventListener('keydown', handleKeyDown)
+    // const handleKeyDown = useMemo((event) => {
+        event.preventDefault()
         const { key } = event;
-        
-        // Calculate the new player position based on the arrow key pressed
-        let newPlayerX = playerX;
-        let newPlayerY = playerY;
-        
+        console.log('HERE', key, playerX, playerY);
+  
         if (key === 'ArrowUp') {
-            newPlayerY = playerY - 1;
+            setPlayerY(playerY - 1);
         } else if (key === 'ArrowDown') {
-            newPlayerY = playerY + 1;
+            setPlayerY(playerY + 1);
         } else if (key === 'ArrowLeft') {
-            newPlayerX = playerX - 1;
+            setPlayerX(playerX - 1);
         } else if (key === 'ArrowRight') {
-            newPlayerX = playerX + 1;
+            setPlayerX(playerX + 1);
         }
+    // }, []);
+    };
+   
+
+   
         
         // Check if the new position is a valid move (not a wall)
         // if (mazeLayout[newPlayerY] && mazeLayout[newPlayerY][newPlayerX] !== 1) {
@@ -43,14 +43,10 @@ const Maze = (props) => {
         // } else {
         //     // handle loss
         // }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
     return (
         <div>
         <h2 className='maze-game-title'>Maze Game</h2>
-        {selectedMode === 'easy' && <EasyMode username={username} setPlayerY={setPlayerY}/>}
+        {selectedMode === 'easy' && <EasyMode username={username} handleKeyDown={handleKeyDown} playerX={playerX} setPlayerX={setPlayerX} playerY={playerY} setPlayerY={setPlayerY}/>}
         {selectedMode === 'medium' && <MediumMode username={username} setPlayerY={setPlayerY} />}
         {selectedMode === 'hard' && <HardMode username={username} setPlayerY={setPlayerY} />}
         </div>
