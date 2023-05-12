@@ -20,6 +20,7 @@ const MediumMode = (props) => {
     [1, 0, 0, 0, 1, 0, 1],
     [1, 1, 1, 1, 1, 0, 1],
     ];
+
     const handleKeyDown = (event) => {
       event.preventDefault();
       const { key } = event;
@@ -44,7 +45,7 @@ const MediumMode = (props) => {
         setPlayerX(0);
         setPlayerY(0);
         setScore(score - 20);
-        alert("If at first you do not succeed, try, try again")
+        // alert(failureQuote)
       } 
     };
 
@@ -57,7 +58,8 @@ const MediumMode = (props) => {
       })
 
       if (playerX === 6 && playerY === 1) {
-        showScore.style.display = "block";
+        showScore.style.display = "block"
+        // alert("YOU WON:", successQuote)
       }
 
       const handleClick = () => {

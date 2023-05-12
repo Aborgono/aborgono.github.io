@@ -11,6 +11,8 @@ const EasyMode = (props) => {
   const score = props.score
   const setScore = props.setScore
   const showScore = document.querySelector("div.score")
+  const successQuote = props.successQuote
+  const failureQuote = props.failureQuote
   const mazeLayout = [
     [0, 0, 1, 0, 1],
     [1, 0, 0, 0, 1],
