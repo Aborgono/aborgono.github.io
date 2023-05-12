@@ -43,7 +43,8 @@ const EasyMode = (props) => {
       ) {
         setPlayerX(0);
         setPlayerY(0);
-        setScore(score - 20)
+        setScore(score - 20);
+        alert("If at first you do not succeed, try, try again")
       } 
     };
     
