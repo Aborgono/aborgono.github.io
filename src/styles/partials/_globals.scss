@@ -8,6 +8,7 @@
         display: inline-block;
         align-self: center;
         padding: 10px 20px;
+        margin: 1rem;
         font-size: 16px;
         font-weight: bold;
         text-align: center;
@@ -17,19 +18,19 @@
         background-color: #090909;
         color: #ffffff;
         cursor: pointer;
-      }
-      
-      .button:hover {
-        background-color: #000000;
-      }
-      
-      .button:active {
-        background-color: #f80808;
-      }
-      
-      .button:focus {
-        outline: none;
-      }
+    }
+    
+    .button:hover {
+    background-color: #000000;
+    }
+    
+    .button:active {
+    background-color: #f80808;
+    }
+    
+    .button:focus {
+    outline: none;
+    }
     
     .maze-row {
     display: flex;
@@ -59,16 +60,16 @@
     
     @keyframes rotate {
         0% {
-          background-color: #ffffff;
+        background-color: #ffffff;
         }
         50% {
-          background-color: #e71111;
+        background-color: #e71111;
         }
         100% {
-          background-color: #000000;
+        background-color: #000000;
         }
-      }
-    
+    }
+
     
     .welcome-message {
     font-size: 24px;
