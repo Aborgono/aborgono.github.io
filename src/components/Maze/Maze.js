@@ -10,6 +10,7 @@ const Maze = (props) => {
     const selectedMode = props.selectedMode
     const [playerX, setPlayerX] = useState(0);
     const [playerY, setPlayerY] = useState(0);
+    const [score, setScore] = useState(100);
 
     // const handleKeyDown = (event) => {
     //     event.preventDefault()
@@ -29,7 +30,7 @@ const Maze = (props) => {
     // const handleKeyDown = (event) => {
     //     event.preventDefault();
     //     const { key } = event;
-      
+    
     //     if (key === 'ArrowUp' && playerY > 0 && mazeLayout[playerY - 1][playerX] !== 1) {
     //         setPlayerY(playerY - 1);
     //     } else if (key === 'ArrowDown' && playerY < mazeLayout.length - 1 && mazeLayout[playerY + 1][playerX] !== 1) {
@@ -51,9 +52,9 @@ const Maze = (props) => {
     return (
         <div>
         <h2 className='maze-game-title'>Maze Game</h2>
-        {selectedMode === 'easy' && <EasyMode username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY}/>}
-        {selectedMode === 'medium' && <MediumMode username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
-        {selectedMode === 'hard' && <HardMode username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
+        {selectedMode === 'easy' && <EasyMode setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY}/>}
+        {selectedMode === 'medium' && <MediumMode setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
+        {selectedMode === 'hard' && <HardMode setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
         </div>
     );
     };

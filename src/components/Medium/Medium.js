@@ -8,6 +8,9 @@ const MediumMode = (props) => {
   const setPlayerX = props.setPlayerX
   const setPlayerY = props.setPlayerY
   const username = props.username
+  const score = props.score
+  const setScore = props.setScore
+  const showScore = document.querySelector("div.score")
   const mazeLayout = [
     [0, 0, 1, 0, 1, 1, 1],
     [1, 0, 0, 0, 1, 0, 0],
@@ -39,6 +42,7 @@ const MediumMode = (props) => {
       ) {
         setPlayerX(0);
         setPlayerY(0);
+        setScore(score - 20)
       } 
     };
 
@@ -49,6 +53,11 @@ const MediumMode = (props) => {
           document.removeEventListener('keydown', handleKeyDown)
       }
       })
+
+      if (playerX === 6 && playerY === 1) {
+        showScore.style.display = "block";
+      }
+
   return (
     <>
       <div className='welcome-message'>Welcome to Medium Mode {username}</div>
@@ -64,6 +73,7 @@ const MediumMode = (props) => {
           </div>
         ))}
       </div>
+      <div className='score'>score: {score}</div>
   </>
     );
 };

@@ -7,6 +7,9 @@ const EasyMode = (props) => {
   const setPlayerX = props.setPlayerX
   const setPlayerY = props.setPlayerY
   const username = props.username
+  const score = props.score
+  const setScore = props.setScore
+  const showScore = document.querySelector("div.score")
   const mazeLayout = [
     [0, 0, 1, 0, 1],
     [1, 0, 0, 0, 1],
@@ -18,6 +21,7 @@ const EasyMode = (props) => {
     const handleKeyDown = (event) => {
       event.preventDefault();
       const { key } = event;
+      console.log(playerX, playerY);
     
       if (key === 'ArrowUp' && playerY > 0) {
           setPlayerY(playerY - 1);
@@ -38,38 +42,20 @@ const EasyMode = (props) => {
       ) {
         setPlayerX(0);
         setPlayerY(0);
+        setScore(score - 20)
       } 
-      // if (
-      //   playerX >= 0 &&
-      //   playerX < mazeLayout[0].length &&
-      //   playerY >= 0 &&
-      //   playerY < mazeLayout.length &&
-      //   mazeLayout[playerY][playerX] === 0
-      // ) {
-      //   if (playerY === mazeLayout.length - 1 && playerX === mazeLayout[0].length - 1) {
-      //     console.log("YOU WON");
-      //   } else {
-      //     // Update the player's position if it's a valid move
-      //     setPlayerX(playerX);
-      //     setPlayerY(playerY);
-      //   }
-      // } else {
-      //   // Reset the player's position to the beginning if it's a wall
-      //   setPlayerX(0);
-      //   setPlayerY(0);
-      // }
-      
     };
     
-
-    
-
   useEffect(() => {
       document.addEventListener('keydown', handleKeyDown);
       return () => {
           document.removeEventListener('keydown', handleKeyDown)
       }
       })
+
+      if (playerX === 4 && playerY === 3) {
+        showScore.style.display = "block";
+      }
 
   return (
     <>
@@ -86,6 +72,7 @@ const EasyMode = (props) => {
           </div>
         ))}
       </div>
+      <div className='score'>score: {score}</div>
   </>
     );
 };
