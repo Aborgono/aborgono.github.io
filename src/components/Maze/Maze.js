@@ -10,7 +10,7 @@ const Maze = (props) => {
     const selectedMode = props.selectedMode
     const [playerX, setPlayerX] = useState(0);
     const [playerY, setPlayerY] = useState(0);
-    const [score, setScore] = useState(100);
+    const [score, setScore] = useState(120);
 
     return (
         <div>

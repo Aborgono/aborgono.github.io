@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import './Easy.scss'
 
 const EasyMode = (props) => {
+  const [mazeVisible, setMazeVisible] = useState(false);
   const playerY = props.playerY
   const playerX = props.playerX
   const setPlayerX = props.setPlayerX
@@ -57,10 +58,20 @@ const EasyMode = (props) => {
         showScore.style.display = "block";
       }
 
+      const handleClick = () => {
+        setMazeVisible(true);
+        setScore(score - 20)
+        setTimeout(() => {
+          setMazeVisible(false);
+        }, 1000);
+      };
+
   return (
     <>
-      <div className='welcome-message'>Welcome to Easy Mode {username}</div>
-      <div className="maze-container">
+      <div className='welcome-message'>Welcome to Easy Mode {username}
+        <button className='button' onClick={handleClick}>Show Maze</button>
+      </div>
+      <div className="maze-container" style={{ visibility: mazeVisible ? 'visible' : 'hidden' }}>
         {mazeLayout.map((row, rowIndex) => (
           <div key={rowIndex} className="maze-row">
             {row.map((cell, cellIndex) => (
