@@ -48,7 +48,7 @@ const HardMode = (props) => {
       ) {
         setPlayerX(0);
         setPlayerY(0);
-        setScore(score - 20);
+        setScore(score - 15);
         alert("If at first you do not succeed, try, try again")
       } 
     };
@@ -67,7 +67,7 @@ const HardMode = (props) => {
 
       const handleClick = () => {
         setMazeVisible(true);
-        setScore(score - 20)
+        setScore(score - 10)
         setTimeout(() => {
           setMazeVisible(false);
         }, 1000);
