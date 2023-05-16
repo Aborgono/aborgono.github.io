@@ -50,7 +50,7 @@ const EasyMode = (props) => {
       } else {
         if (playerX === 4 && playerY === 3) {
           showScore.style.display = "block";
-          alert(successQuote)
+          alert(`YOU WON: ${successQuote}`)
         }
       }
     };
@@ -62,11 +62,6 @@ const EasyMode = (props) => {
       }
       })
 
-      // if (playerX === 4 && playerY === 3) {
-      //   showScore.style.display = "block";
-      //   alert(successQuote)
-      // }
-
       const handleClick = () => {
         setMazeVisible(true);
         setFirstClick(true);
@@ -74,9 +69,6 @@ const EasyMode = (props) => {
         setTimeout(() => {
           setMazeVisible(false);
         }, 1000);
-        setTimeout(() => {
-          setFirstClick(false);
-        }, 3000);
       };
 
       const playerTileClass = (rowIndex, cellIndex) => {

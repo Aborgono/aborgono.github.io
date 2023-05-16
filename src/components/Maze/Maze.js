@@ -33,9 +33,9 @@ const Maze = (props) => {
         <>
             <div className='background'>
             <h2 className='maze-game-title'>Maze Game</h2>
-            {selectedMode === 'easy' && <EasyMode successQuote={successQuote} failureQuote={failureQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY}/>}
-            {selectedMode === 'medium' && <MediumMode setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
-            {selectedMode === 'hard' && <HardMode setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
+            {selectedMode === 'easy' && <EasyMode successQuote={successQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY}/>}
+            {selectedMode === 'medium' && <MediumMode successQuote={successQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
+            {selectedMode === 'hard' && <HardMode successQuote={successQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
             </div>
         </>
     );
