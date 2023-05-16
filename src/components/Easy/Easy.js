@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Easy.scss'
+import Toast from '../toastContainer/toast';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const EasyMode = (props) => {
   const [mazeVisible, setMazeVisible] = useState(false);
@@ -13,6 +16,7 @@ const EasyMode = (props) => {
   const setScore = props.setScore
   const showScore = document.querySelector("div.score")
   const successQuote = props.successQuote
+  const notify = () => toast("Wow so easy!");
   const mazeLayout = [
     [0, 0, 1, 0, 1],
     [1, 0, 0, 0, 1],
@@ -50,7 +54,8 @@ const EasyMode = (props) => {
       } else {
         if (playerX === 4 && playerY === 3) {
           showScore.style.display = "block";
-          alert(`YOU WON: ${successQuote}`)
+          <Toast />
+          console.log("this is noti", notify);
         }
       }
     };
