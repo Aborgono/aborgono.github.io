@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './HomePage.scss';
+import { Link } from 'react-router-dom';
+
 
 const HomePage = (props) => {
   const startGame = props.startGame;
@@ -54,6 +56,9 @@ const HomePage = (props) => {
         >
           Start Game
         </button>
+        <Link to='/howToPlay'>
+          <button type="submit" className="instructions">How to play</button>
+        </Link>
       </form>
     </div>
   );
