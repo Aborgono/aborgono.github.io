@@ -93,7 +93,7 @@ const HardMode = (props) => {
 
       return (
         <>
-          <div className='welcome-message'>Welcome to Easy Mode {username}
+          <div className='welcome-message'>Welcome to Hard Mode {username}
             <button className='button' onClick={handleClick}>Show Maze</button>
           </div>
           <div className="maze-container">
