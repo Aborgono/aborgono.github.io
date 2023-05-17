@@ -52,12 +52,12 @@ const MediumMode = (props) => {
       ) {
         newPlayerX = 0;
         newPlayerY = 0;
-        setScore(score - 15);
-        alert("If at first you do not succeed, try, try again")
+        setScore(score - 10);
+        toast("YOU'VE HIT A WALL: If at first you do not succeed, try, try again")
       } else {
         if (newPlayerX === 6 && newPlayerY === 1) {
           showScore.style.display = "block";
-          toast("YOU WON")
+          toast(`YOU WON: ${successQuote}`)
         }
       }
       setPlayerX(newPlayerX)
@@ -75,7 +75,7 @@ const MediumMode = (props) => {
       const handleClick = () => {
         setMazeVisible(true);
         setFirstClick(true);
-        setScore(score - 10)
+        setScore(score - 20)
         setTimeout(() => {
           setMazeVisible(false);
         }, 1000);
@@ -126,7 +126,7 @@ const MediumMode = (props) => {
           <div className='score'>score: {score}</div>
           <ToastContainer
             position="top-center"
-            autoClose={5000}
+            autoClose={10000}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick

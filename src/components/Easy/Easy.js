@@ -15,7 +15,7 @@ const EasyMode = (props) => {
   const score = props.score
   const setScore = props.setScore
   const showScore = document.querySelector("div.score")
-  // const successQuote = props.successQuote
+  const successQuote = props.successQuote
   // const notify = () => toast("Wow so easy!");
   const mazeLayout = [
     [0, 0, 1, 0, 1],
@@ -51,12 +51,12 @@ const EasyMode = (props) => {
       ) {
         newPlayerX = 0;
         newPlayerY = 0;
-        setScore(score - 15);
-        alert("If at first you do not succeed, try, try again")
+        setScore(score - 10);
+        toast("YOU'VE RUN INTO A WALL: Never give up!")
       } else {
         if (newPlayerX === 4 && newPlayerY === 3) {
           showScore.style.display = "block";
-          toast("YOU WON")
+          toast(`YOU WON: ${successQuote}`)
         }
       }
       setPlayerX(newPlayerX)
@@ -74,7 +74,7 @@ const EasyMode = (props) => {
       const handleClick = () => {
         setMazeVisible(true);
         setFirstClick(true);
-        setScore(score - 10)
+        setScore(score - 20)
         setTimeout(() => {
           setMazeVisible(false);
         }, 1000);
@@ -121,7 +121,7 @@ const EasyMode = (props) => {
       <div className='score'>score: {score}</div>
       <ToastContainer
             position="top-center"
-            autoClose={5000}
+            autoClose={10000}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick

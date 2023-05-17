@@ -57,12 +57,12 @@ const HardMode = (props) => {
       ) {
         newPlayerX = 0;
         newPlayerY = 1;
-        setScore(score - 15);
-        alert("If at first you do not succeed, try, try again")
+        setScore(score - 10);
+        toast("You'll NEVER win!!!")
       } else {
         if (newPlayerX === 8 && newPlayerY === 6) {
           showScore.style.display = "block";
-          toast("YOU WON")
+          toast(`YOU WON: ${successQuote}`)
         }
       }
       setPlayerX(newPlayerX)
@@ -81,7 +81,7 @@ const HardMode = (props) => {
       const handleClick = () => {
         setMazeVisible(true);
         setFirstClick(true);
-        setScore(score - 10)
+        setScore(score - 20)
         setTimeout(() => {
           setMazeVisible(false);
           setFirstClick(false);
@@ -130,7 +130,7 @@ const HardMode = (props) => {
           <div className='score'>score: {score}</div>
           <ToastContainer
             position="top-center"
-            autoClose={5000}
+            autoClose={10000}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick

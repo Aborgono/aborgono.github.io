@@ -12,7 +12,7 @@ const Maze = (props) => {
     const selectedMode = props.selectedMode
     const [playerX, setPlayerX] = useState(0);
     const [playerY, setPlayerY] = useState(0);
-    const [score, setScore] = useState(110);
+    const [score, setScore] = useState(120);
     const [failureQuote, setFailureQuote] = useState();
     const [successQuote, setSuccessQuote] = useState();
     const navigate = useNavigate();
@@ -24,11 +24,6 @@ const Maze = (props) => {
             navigate('/')
         }
     }, [])
-    // useEffect(() => {
-    //     axios.get(`https://api.api-ninjas.com/v1/quotes?category=failure`, { headers: { 'x-api-key': apiKey } }).then((response) => {
-    //         setFailureQuote(response.data[0].quote);
-    //     });
-    // }, []);
 
     useEffect(() => {
         axios.get(`https://api.api-ninjas.com/v1/quotes?category=success`, { headers: { 'x-api-key': apiKey } }).then((response) => {
