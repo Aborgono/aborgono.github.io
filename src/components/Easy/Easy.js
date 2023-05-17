@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './Easy.scss'
-import Toast from '../toastContainer/toast';
 import { ToastContainer, toast } from 'react-toastify';
 
 
@@ -15,8 +14,8 @@ const EasyMode = (props) => {
   const score = props.score
   const setScore = props.setScore
   const showScore = document.querySelector("div.score")
-  const successQuote = props.successQuote
-  const notify = () => toast("Wow so easy!");
+  // const successQuote = props.successQuote
+  // const notify = () => toast("Wow so easy!");
   const mazeLayout = [
     [0, 0, 1, 0, 1],
     [1, 0, 0, 0, 1],
@@ -29,34 +28,39 @@ const EasyMode = (props) => {
       event.preventDefault();
       const { key } = event;
       console.log(playerX, playerY);
-    
-      if (key === 'ArrowUp' && playerY > 0) {
-          setPlayerY(playerY - 1);
-      } else if (key === 'ArrowDown' && playerY < mazeLayout.length - 1) {
-          setPlayerY(playerY + 1);
-      } else if (key === 'ArrowLeft' && playerX > 0) {
-          setPlayerX(playerX - 1);
-      } else if (key === 'ArrowRight' && playerX < mazeLayout[0].length - 1) {
-          setPlayerX(playerX + 1);
-      }
+      let newPlayerX = playerX
+      let newPlayerY = playerY
 
+      if (key === 'ArrowUp' && playerY > 0) {
+          newPlayerY = (newPlayerY - 1);
+      } else if (key === 'ArrowDown' && playerY < mazeLayout.length - 1) {
+          newPlayerY = (newPlayerY + 1);
+      } else if (key === 'ArrowLeft' && playerX > 0) {
+          newPlayerX = (newPlayerX - 1);
+      } else if (key === 'ArrowRight' && playerX < mazeLayout[0].length - 1) {
+          newPlayerX = (newPlayerX + 1);
+      }
+      
       if (
-        playerX >= 0 &&
-        playerX < mazeLayout[0].length &&
-        playerY >= 0 &&
-        playerY < mazeLayout.length &&
-        mazeLayout[playerY][playerX] === 1
+        newPlayerX >= 0 &&
+        newPlayerX < mazeLayout[0].length &&
+        newPlayerY >= 0 &&
+        newPlayerY < mazeLayout.length &&
+        mazeLayout[newPlayerY][newPlayerX] === 1
       ) {
-        setPlayerX(0);
-        setPlayerY(0);
+        newPlayerX = 0;
+        newPlayerY = 0;
         setScore(score - 15);
         alert("If at first you do not succeed, try, try again")
       } else {
-        if (playerX === 4 && playerY === 3) {
+        if (newPlayerX === 4 && newPlayerY === 3) {
           showScore.style.display = "block";
           toast("YOU WON")
         }
       }
+      setPlayerX(newPlayerX)
+      setPlayerY(newPlayerY)
+
     };
     
   useEffect(() => {
