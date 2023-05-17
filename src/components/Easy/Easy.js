@@ -54,8 +54,7 @@ const EasyMode = (props) => {
       } else {
         if (playerX === 4 && playerY === 3) {
           showScore.style.display = "block";
-          <Toast />
-          console.log("this is noti", notify);
+          toast("YOU WON")
         }
       }
     };

@@ -5,6 +5,7 @@ import EasyMode from '../Easy/Easy';
 import HardMode from '../Hard/Hard';
 import MediumMode from '../Medium/Medium';
 import './Maze.scss';
+import { useNavigate } from 'react-router-dom';
 
 const Maze = (props) => {
     const username = props.username
@@ -14,9 +15,15 @@ const Maze = (props) => {
     const [score, setScore] = useState(110);
     const [failureQuote, setFailureQuote] = useState();
     const [successQuote, setSuccessQuote] = useState();
+    const navigate = useNavigate();
     const apiKey = 'jg2gZ6JhSxFv+Urms3ZXiA==R6DxnzdO2uwY9y7U'
 
-
+    useEffect(() => {
+        console.log(selectedMode);
+        if (!selectedMode) {
+            navigate('/')
+        }
+    }, [])
     // useEffect(() => {
     //     axios.get(`https://api.api-ninjas.com/v1/quotes?category=failure`, { headers: { 'x-api-key': apiKey } }).then((response) => {
     //         setFailureQuote(response.data[0].quote);
