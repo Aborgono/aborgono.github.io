@@ -120,7 +120,7 @@ const EasyMode = (props) => {
       </div>
       <div className='score'>score: {score}</div>
       <ToastContainer
-            position="top-center"
+            position="bottom-center"
             autoClose={10000}
             hideProgressBar={false}
             newestOnTop={false}
