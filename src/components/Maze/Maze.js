@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import HomePage from '../../pages/HomePage';
 import EasyMode from '../Easy/Easy';
 import HardMode from '../Hard/Hard';
 import MediumMode from '../Medium/Medium';
@@ -13,7 +12,6 @@ const Maze = (props) => {
     const [playerX, setPlayerX] = useState(0);
     const [playerY, setPlayerY] = useState(0);
     const [score, setScore] = useState(120);
-    const [failureQuote, setFailureQuote] = useState();
     const [successQuote, setSuccessQuote] = useState();
     const navigate = useNavigate();
     const apiKey = 'jg2gZ6JhSxFv+Urms3ZXiA==R6DxnzdO2uwY9y7U'

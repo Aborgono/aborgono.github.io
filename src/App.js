@@ -3,7 +3,6 @@ import Maze from './components/Maze/Maze';
 import HomePage from './pages/HomePage';
 import HowToPlay from './components/HowToPlay/HowToPlay';
 import { Routes, Route, useNavigate} from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
 
 const App = () => {
   const [username, setUsername] = useState();
