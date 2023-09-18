@@ -23,7 +23,7 @@ const HomePage = (props) => {
 
   return (
     <div className="homepage">
-      <h2 className="homepage__title">Welcome Maze Runner!</h2>
+      <h2 className="homepage__title">Welcome Maze Runner! TESTING</h2>
       <form className="homepage__form" onSubmit={handleSubmit}>
         <label>
           Username:
