@@ -1,81 +1,46 @@
-import React, { useState, useEffect } from 'react';
-import HomePage from './HomePage';
-import EasyMode from './EasyMode';
-import MediumMode from './MediumMode';
-import HardMode from './HardMode';
+import React, { useState, useEffect, useCallback } from 'react';
+import axios from 'axios';
+import HomePage from '../../pages/HomePage';
+import EasyMode from '../Easy/Easy';
+import HardMode from '../Hard/Hard';
+import MediumMode from '../Medium/Medium';
+import './Maze.scss';
+import { useNavigate } from 'react-router-dom';
 
-const Maze = () => {
-  const [username, setUsername] = useState('');
-  const [selectedMode, setSelectedMode] = useState('');
-  const [gameStarted, setGameStarted] = useState(false);
-  const [playerX, setPlayerX] = useState(0);
-  const [playerY, setPlayerY] = useState();
+const Maze = (props) => {
+    const username = props.username
+    const selectedMode = props.selectedMode
+    const [playerX, setPlayerX] = useState(0);
+    const [playerY, setPlayerY] = useState(0);
+    const [score, setScore] = useState(120);
+    const [failureQuote, setFailureQuote] = useState();
+    const [successQuote, setSuccessQuote] = useState();
+    const navigate = useNavigate();
+    const apiKey = 'jg2gZ6JhSxFv+Urms3ZXiA==R6DxnzdO2uwY9y7U'
 
-  const startGame = (username, mode) => {
-    setUsername(username);
-    setSelectedMode(mode);
-    setGameStarted(true);
-  };
+    useEffect(() => {
+        console.log(selectedMode);
+        if (!selectedMode) {
+            navigate('/')
+        }
+    }, [])
 
-  useEffect(() => {
-    let mazeLayout = []; // Placeholder for the maze layout
+    useEffect(() => {
+        axios.get(`https://api.api-ninjas.com/v1/quotes?category=success`, { headers: { 'x-api-key': apiKey } }).then((response) => {
+            setSuccessQuote(response.data[0].quote);
+        });
+    }, []);
 
-    // Set up the maze layout based on the selected mode
-    if (selectedMode === 'easy') {
-      // Set up the maze layout for easy mode
-      mazeLayout = [
-        [1, 1, 1, 1, 1],
-        [0, 0, 0, 0, 0],
-        [1, 1, 1, 1, 1],
-      ];
-    } else if (selectedMode === 'medium') {
-      // Set up the maze layout for medium mode
-      mazeLayout = [
-        [1, 0, 1, 1, 1],
-        [1, 0, 0, 0, 1],
-        [1, 1, 1, 0, 1],
-      ];
-    } else if (selectedMode === 'hard') {
-      // Set up the maze layout for hard mode
-      mazeLayout = [
-        [1, 1, 1, 1, 1],
-        [1, 0, 1, 0, 1],
-        [1, 0, 0, 0, 1],
-        [1, 1, 1, 1, 1],
-      ];
-    }
-
-    // Set the initial position of the player
-    setPlayerY(Math.floor(mazeLayout.length / 2));
-
-    // Start the game logic and handle player navigation, collisions, etc.
-    const handleKeyDown = (event) => {
-      // Logic to handle the player's navigation using arrow keys
-      // Check for collisions with walls and update score
-      // Handle win or loss conditions
-      // Update playerX and playerY based on arrow key input
+    return (
+        <>
+            <div className='background'>
+            <h2 className='maze-game-title'>Maze Game</h2>
+            {selectedMode === 'easy' && <EasyMode successQuote={successQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY}/>}
+            {selectedMode === 'medium' && <MediumMode successQuote={successQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
+            {selectedMode === 'hard' && <HardMode successQuote={successQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
+            </div>
+        </>
+    );
     };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    // Clean up the event listener
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [gameStarted, selectedMode]);
-
-  if (!gameStarted) {
-    return <HomePage startGame={startGame} />;
-  }
-
-  return (
-    <div>
-      <h2>Maze Game</h2>
-      {selectedMode === 'easy' && <EasyMode />}
-      {selectedMode === 'medium' && <MediumMode />}
-      {selectedMode === 'hard' && <HardMode />}
-    </div>
-  );
-};
 
 export default Maze;
