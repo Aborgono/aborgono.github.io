@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './HomePage.scss';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -20,33 +20,21 @@ const HomePage = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     startGame(username, selectedMode);
-    // sendUserAndDifficultyToBackend(username, selectedMode);
+    sendUserAndDifficultyToBackend(username, selectedMode);
   };
-
-  // useEffect(() => {
-  //   axios.post('http://localhost:8080/', {
-  //     test: "TEST"
-  //   })
-  //   .then(response => {
-  //     console.log('Data sent successfully:', response.data);
-  //   })
-  //   .catch(error => {
-  //     console.error('Error sending data:', error);
-  //   });
-  // }, []);
   
 
-  // const sendUserAndDifficultyToBackend = (username, selectedMode) => {
-  //     axios.post('http://localhost:8080', {
-  //       test: "TEST"
-  //     })
-  //       .then (response => {
-  //         console.log('Data sent successfully: ', response.data);
-  //       })
-  //       .catch(error => {
-  //         console.log("Data not sent: ", error);
-  //       })
-  // };
+  const sendUserAndDifficultyToBackend = (username, selectedMode) => {
+      const data = { username, selectedMode};
+      
+      axios.post('http://localhost:8080/users', data)
+        .then (response => {
+          console.log('Data sent successfully: ', response);
+        })
+        .catch(error => {
+          console.log("Data not sent: ", error);
+        })
+  };
 
   return (
     <div className="homepage">
