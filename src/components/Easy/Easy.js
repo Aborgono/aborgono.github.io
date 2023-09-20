@@ -17,6 +17,8 @@ const EasyMode = (props) => {
   const showScore = document.querySelector("div.score")
   const successQuote = props.successQuote
   // const notify = () => toast("Wow so easy!");
+
+  
   const mazeLayout = [
     [0, 0, 1, 0, 1],
     [1, 0, 0, 0, 1],
@@ -57,6 +59,7 @@ const EasyMode = (props) => {
         if (newPlayerX === 4 && newPlayerY === 3) {
           showScore.style.display = "block";
           toast(`YOU WON: ${successQuote}`)
+          console.log("this is THREE", score, username);
         }
       }
       setPlayerX(newPlayerX)
@@ -64,6 +67,7 @@ const EasyMode = (props) => {
 
     };
     
+
   useEffect(() => {
       document.addEventListener('keydown', handleKeyDown);
       return () => {
