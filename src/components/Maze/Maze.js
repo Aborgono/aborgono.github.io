@@ -15,9 +15,14 @@ const Maze = (props) => {
     const [successQuote, setSuccessQuote] = useState();
     const navigate = useNavigate();
     const apiKey = 'jg2gZ6JhSxFv+Urms3ZXiA==R6DxnzdO2uwY9y7U'
+    const data = {
+        "user": username,
+        "difficulty": selectedMode
+    }
 
     useEffect(() => {
-        console.log(selectedMode);
+        console.log(data);
+        // sendUserAndDifficultyToBackend();
         if (!selectedMode) {
             navigate('/')
         }
@@ -28,6 +33,32 @@ const Maze = (props) => {
             setSuccessQuote(response.data[0].quote);
         });
     }, []);
+
+        // useEffect(() => {
+        // axios.post('http://localhost:8080/users', {
+        // test: "TEST"
+        // })
+        // .then(response => {
+        // console.log('Data sent successfully:', response.data);
+        // })
+        // .catch(error => {
+        // console.error('Error sending data:', error);
+        // });
+        // }, []);
+
+    // const sendUserAndDifficultyToBackend = (username, selectedMode) => {
+    //         axios.post('http://localhost:8080/users', {
+    //           test: "TEST"
+    //         })
+    //           .then (response => {
+    //             console.log('Data sent successfully: ', response.data);
+    //           })
+    //           .catch(error => {
+    //             console.log("Data not sent: ", error);
+    //           })
+    //     };
+
+    console.log("this is my username and mode", data);
 
     return (
         <>
