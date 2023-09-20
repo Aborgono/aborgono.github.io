@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Easy.scss'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 
 const EasyMode = (props) => {
@@ -12,12 +13,13 @@ const EasyMode = (props) => {
   const setPlayerX = props.setPlayerX
   const setPlayerY = props.setPlayerY
   const username = props.username
+  const selectedMode = props.selectedMode
   const score = props.score
   const setScore = props.setScore
   const showScore = document.querySelector("div.score")
   const successQuote = props.successQuote
+  const [hasWon, setHasWon] = useState(false);
   // const notify = () => toast("Wow so easy!");
-
   
   const mazeLayout = [
     [0, 0, 1, 0, 1],
@@ -57,15 +59,34 @@ const EasyMode = (props) => {
         toast("YOU'VE RUN INTO A WALL: Never give up!")
       } else {
         if (newPlayerX === 4 && newPlayerY === 3) {
-          showScore.style.display = "block";
-          toast(`YOU WON: ${successQuote}`)
-          console.log("this is THREE", score, username);
+          handleWin();
         }
       }
       setPlayerX(newPlayerX)
       setPlayerY(newPlayerY)
 
     };
+
+    const handleWin = () => {
+      if (!hasWon) {
+        showScore.style.display = "block";
+        console.log(username, selectedMode,score);
+        sendUserAndDifficultyToBackend(username, selectedMode, score);
+        setHasWon(true)
+      }
+    }
+
+    const sendUserAndDifficultyToBackend = (username, selectedMode, score) => {
+      const data = { username, selectedMode, score};
+      
+      axios.post('http://localhost:8080/users', data)
+        .then (response => {
+          console.log('Data sent successfully: ', response);
+        })
+        .catch(error => {
+          console.log("Data not sent: ", error);
+        })
+  };
     
 
   useEffect(() => {

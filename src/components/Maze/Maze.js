@@ -22,19 +22,19 @@ const Maze = (props) => {
         }
     }, [])
 
-    useEffect(() => {
-        axios.get(`https://api.api-ninjas.com/v1/quotes?category=success`, { headers: { 'x-api-key': apiKey } }).then((response) => {
-            setSuccessQuote(response.data[0].quote);
-        });
-    }, []);
+    // useEffect(() => {
+    //     axios.get(`https://api.api-ninjas.com/v1/quotes?category=success`, { headers: { 'x-api-key': apiKey } }).then((response) => {
+    //         setSuccessQuote(response.data[0].quote);
+    //     });
+    // }, []);
 
     return (
         <>
             <div className='background'>
             <h2 className='maze-game-title'>Maze Game</h2>
-            {selectedMode === 'easy' && <EasyMode successQuote={successQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY}/>}
-            {selectedMode === 'medium' && <MediumMode successQuote={successQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
-            {selectedMode === 'hard' && <HardMode successQuote={successQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
+            {selectedMode === 'easy' && <EasyMode selectedMode={selectedMode} successQuote={successQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY}/>}
+            {selectedMode === 'medium' && <MediumMode selectedMode={selectedMode} successQuote={successQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
+            {selectedMode === 'hard' && <HardMode selectedMode={selectedMode} successQuote={successQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
             </div>
         </>
     );
