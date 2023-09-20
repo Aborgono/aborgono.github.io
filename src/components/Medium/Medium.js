@@ -19,7 +19,7 @@ const MediumMode = (props) => {
   const setScore = props.setScore
   const [hasWon, setHasWon] = useState(false);
   const showScore = document.querySelector("div.score")
-  const successQuote = props.successQuote
+  // const successQuote = props.successQuote
   const mazeLayout = [
     [0, 0, 1, 0, 1, 1, 1],
     [1, 0, 0, 0, 1, 0, 2],

@@ -16,7 +16,7 @@ const HardMode = (props) => {
   const selectedMode = props.selectedMode
   const score = props.score
   const setScore = props.setScore
-  const successQuote = props.successQuote
+  // const successQuote = props.successQuote
   const [hasWon, setHasWon] = useState(false);
   const showScore = document.querySelector("div.score")
   const mazeLayout = [

@@ -17,7 +17,7 @@ const EasyMode = (props) => {
   const score = props.score
   const setScore = props.setScore
   const showScore = document.querySelector("div.score")
-  const successQuote = props.successQuote
+  // const successQuote = props.successQuote
   const [hasWon, setHasWon] = useState(false);
   // const notify = () => toast("Wow so easy!");
   
