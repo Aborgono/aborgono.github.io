@@ -18,10 +18,10 @@ function LeaderBoard() {
         <div className="leaderboard-container">
         {leaderBoard.map((user) => (
           <div key={user.id} className="leaderboard-entry">
-            <h1>{user.name}</h1>
+            <h1>{user.username}</h1>
             <li>
               <ul>
-                <li>Difficulty: {user.difficulty}</li>
+                <li>Difficulty: {user.selectedMode}</li>
                 <li>Score: {user.score}</li>
               </ul>
             </li>
