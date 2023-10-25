@@ -3,33 +3,42 @@ import axios from "axios";
 import './Leaderboard.scss';
 
 function LeaderBoard() {
-    const [leaderBoard, setLeaderBoard] = useState([])
 
-    useEffect(() => {
-        axios.get('http://localhost:8080/leaderBoard')
-        .then((response) => {
-            console.log("this is my response", response.data);
-            setLeaderBoard(response.data)
-        })
-    }, [])
+  const [leaderBoard, setLeaderBoard] = useState([]);
+  const [loading, setLoading] = useState(true); // Add loading state
+
+  useEffect(() => {
+      axios.get('http://localhost:8080/leaderBoard')
+          .then((response) => {
+              console.log("this is my response", response.data);
+              setLeaderBoard(response.data);
+              setLoading(false); // Data has been loaded, set loading to false
+          })
+          .catch((error) => {
+              console.error("Error loading leaderboard data:", error);
+              setLoading(false); // Even in case of an error, set loading to false
+          });
+  }, []);
 
     console.log("this is my user", leaderBoard);
-    return (
-        <div className="leaderboard-container">
-        {leaderBoard.map((user) => (
-          <div key={user.id} className="leaderboard-entry">
-            <h1>{user.username}</h1>
-            <li>
-              <ul>
-                <li>Difficulty: {user.selectedMode}</li>
-                <li>Score: {user.score}</li>
-              </ul>
-            </li>
-          </div>
-        ))}
-      </div>
-      
-    );
+
+  return (
+    <div className="leaderboard-container">
+      {loading ? (
+          <p>Loading...</p>
+      ) : (
+          leaderBoard.map((user) => (
+              <div key={user.id} className="leaderboard-entry">
+                  <h1>{user.username}</h1>
+                  <ul>
+                      <li>Difficulty: {user.selectedMode}</li>
+                      <li>Score: {user.score}</li>
+                  </ul>
+              </div>
+          ))
+      )}
+    </div>
+  );
 }
 
 export default LeaderBoard;
