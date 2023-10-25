@@ -19,7 +19,7 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path='/maze-runner' element={<HomePage startGame={startGame}/>}></Route>
+        <Route path='/' element={<HomePage startGame={startGame}/>}></Route>
         <Route path='/maze' element={<Maze gameStarted={gameStarted} startGame={startGame} username={username} selectedMode={selectedMode} />}></Route>
         <Route path='/howToPlay' element={<HowToPlay/>}></Route>
         <Route path='/leaderboard' element={<LeaderBoard/>}></Route>
