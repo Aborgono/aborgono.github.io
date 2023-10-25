@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './HomePage.scss';
 import { Link } from 'react-router-dom';
+// import axios from 'axios';
 
 
 const HomePage = (props) => {
@@ -20,6 +21,20 @@ const HomePage = (props) => {
     event.preventDefault();
     startGame(username, selectedMode);
   };
+  // sendUserAndDifficultyToBackend(username, selectedMode);
+  
+
+  // const sendUserAndDifficultyToBackend = (username, selectedMode) => {
+  //     const data = { username, selectedMode};
+      
+  //     axios.post('http://localhost:8080/users', data)
+  //       .then (response => {
+  //         console.log('Data sent successfully: ', response);
+  //       })
+  //       .catch(error => {
+  //         console.log("Data not sent: ", error);
+  //       })
+  // };
 
   return (
     <div className="homepage">
@@ -58,6 +73,9 @@ const HomePage = (props) => {
         </button>
         <Link to='/howToPlay'>
           <button type="submit" className="instructions">How to play</button>
+        </Link>
+        <Link to='/leaderboard'>
+          <button type="submit" className="instructions">LeaderBoard</button>
         </Link>
       </form>
     </div>
