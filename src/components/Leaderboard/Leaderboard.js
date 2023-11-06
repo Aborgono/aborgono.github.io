@@ -9,7 +9,7 @@ function LeaderBoard() {
 
   useEffect(() => {
       // axios.get('http://localhost:8080/leaderBoard')
-      axios.get('https://vercel-maze-runner-azeboilu3-aborgono.vercel.app/api/leaderboard')
+      axios.get('https://vercel-maze-runner-2cbwqwsp1-aborgono.vercel.app/api/leaderboard')
           .then((response) => {
               console.log("this is my response", response.data);
               setLeaderBoard(response.data);
