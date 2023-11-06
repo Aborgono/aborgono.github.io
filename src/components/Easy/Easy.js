@@ -79,8 +79,7 @@ const EasyMode = (props) => {
     const sendUserAndDifficultyToBackend = (username, selectedMode, score) => {
       const data = { username, selectedMode, score};
       
-      axios.post('http://localhost:8080/users', data)
-      axios.post('https://vercel-maze-runner-azeboilu3-aborgono.vercel.app/api/users', data)
+      axios.post('https://vercel-maze-runner-2cbwqwsp1-aborgono.vercel.app/api/users', data)
         .then (response => {
           console.log('Data sent successfully: ', response);
         })
