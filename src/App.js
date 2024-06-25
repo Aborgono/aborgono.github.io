@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Maze from './components/Maze/Maze';
 import HomePage from './pages/HomePage';
 import HowToPlay from './components/HowToPlay/HowToPlay';
 import { Routes, Route, useNavigate} from 'react-router-dom';
 import LeaderBoard from './components/Leaderboard/Leaderboard';
+import fetchDocuments from './firebase/controller';
 
 const App = () => {
   const [username, setUsername] = useState();
@@ -16,6 +17,7 @@ const App = () => {
     setGameStarted(true);
     navigate('/maze')
   };
+
   return (
     <>
       <Routes>

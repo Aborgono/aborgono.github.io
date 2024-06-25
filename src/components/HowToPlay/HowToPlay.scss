@@ -1,4 +1,5 @@
 .how-to-play {
+    padding-left: 1rem;
     .how-to-play__title {
         font-size: 24px;
         margin-bottom: 16px;
@@ -13,3 +14,10 @@
         }
     }
 }
+
+
+.back-arrow {
+    width: 2rem;
+    padding: 1rem;
+    cursor: pointer;
+  }

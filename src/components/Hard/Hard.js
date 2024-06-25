@@ -2,8 +2,8 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
-
+import { addUserAndScore } from '../../firebase/controller';
+import { useNavigate } from 'react-router-dom';
 
 const HardMode = (props) => {
   const [mazeVisible, setMazeVisible] = useState(false);
@@ -16,6 +16,7 @@ const HardMode = (props) => {
   const selectedMode = props.selectedMode
   const score = props.score
   const setScore = props.setScore
+  const navigate = useNavigate()
   // const successQuote = props.successQuote
   const [hasWon, setHasWon] = useState(false);
   const showScore = document.querySelector("div.score")
@@ -76,23 +77,14 @@ const HardMode = (props) => {
       if (!hasWon) {
         showScore.style.display = "block";
         console.log(username, selectedMode,score);
-        sendUserAndDifficultyToBackend(username, selectedMode, score);
+        addUserAndScore(username, selectedMode, score)
         setHasWon(true)
+        setTimeout(() => {
+          navigate('/')
+        }, 2500)
       }
-    }
-
-    const sendUserAndDifficultyToBackend = (username, selectedMode, score) => {
-      const data = { username, selectedMode, score};
       
-      axios.post('https://vercel-maze-runner-2cbwqwsp1-aborgono.vercel.app/api/users', data)
-        .then (response => {
-          console.log('Data sent successfully: ', response);
-        })
-        .catch(error => {
-          console.log("Data not sent: ", error);
-        })
-  };
-
+    }
 
   useEffect(() => {
       document.addEventListener('keydown', handleKeyDown);

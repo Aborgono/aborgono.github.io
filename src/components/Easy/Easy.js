@@ -3,7 +3,8 @@ import './Easy.scss'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
+import { addUserAndScore } from '../../firebase/controller'
 
 const EasyMode = (props) => {
   const [mazeVisible, setMazeVisible] = useState(false);
@@ -19,7 +20,7 @@ const EasyMode = (props) => {
   const showScore = document.querySelector("div.score")
   // const successQuote = props.successQuote
   const [hasWon, setHasWon] = useState(false);
-  // const notify = () => toast("Wow so easy!");
+  const navigate = useNavigate()
   
   const mazeLayout = [
     [0, 0, 1, 0, 1],
@@ -71,23 +72,14 @@ const EasyMode = (props) => {
       if (!hasWon) {
         showScore.style.display = "block";
         console.log(username, selectedMode,score);
-        sendUserAndDifficultyToBackend(username, selectedMode, score);
+        addUserAndScore(username, selectedMode, score)
         setHasWon(true)
+        setTimeout(() => {
+          navigate('/')
+        }, 2500)
       }
     }
 
-    const sendUserAndDifficultyToBackend = (username, selectedMode, score) => {
-      const data = { username, selectedMode, score};
-      
-      axios.post('https://vercel-maze-runner-2cbwqwsp1-aborgono.vercel.app/api/users', data)
-        .then (response => {
-          console.log('Data sent successfully: ', response);
-        })
-        .catch(error => {
-          console.log("Data not sent: ", error);
-        })
-  };
-    
 
   useEffect(() => {
       document.addEventListener('keydown', handleKeyDown);
@@ -108,6 +100,8 @@ const EasyMode = (props) => {
       const playerTileClass = (rowIndex, cellIndex) => {
         return (rowIndex === playerY && cellIndex === playerX ? 'start' : 'path')
       }
+
+
   return (
     <>
       <div className='welcome-message'>Welcome to Easy Mode {username}

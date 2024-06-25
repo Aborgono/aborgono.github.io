@@ -5,6 +5,8 @@ import HardMode from '../Hard/Hard';
 import MediumMode from '../Medium/Medium';
 import './Maze.scss';
 import { useNavigate } from 'react-router-dom';
+import backArrow from '../../assets/images/arrow-back-icon-which-is-suitable-for-commercial-work-and-easily-modify-or-edit-it-vector.jpg'
+
 
 const Maze = (props) => {
     const username = props.username
@@ -22,16 +24,17 @@ const Maze = (props) => {
         }
     }, [])
 
-    // useEffect(() => {
-    //     axios.get(`https://api.api-ninjas.com/v1/quotes?category=success`, { headers: { 'x-api-key': apiKey } }).then((response) => {
-    //         setSuccessQuote(response.data[0].quote);
-    //     });
-    // }, []);
+    const backToMenu = () => {
+        navigate('/')
+    }
+
 
     return (
         <>
             <div className='background'>
             <h2 className='maze-game-title'>Maze Game</h2>
+            <img className="back-arrow-maze" src={backArrow} alt="backArrow" onClick={() => backToMenu()}/>
+
             {selectedMode === 'easy' && <EasyMode selectedMode={selectedMode} successQuote={successQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY}/>}
             {selectedMode === 'medium' && <MediumMode selectedMode={selectedMode} successQuote={successQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
             {selectedMode === 'hard' && <HardMode selectedMode={selectedMode} successQuote={successQuote} setScore={setScore} score={score} username={username} setPlayerX={setPlayerX} setPlayerY={setPlayerY} playerX={playerX} playerY={playerY} />}
